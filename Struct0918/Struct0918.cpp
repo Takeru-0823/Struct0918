@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+using namespace std;
 
 struct DYNAMICOBJECT
 {
@@ -8,7 +9,7 @@ struct DYNAMICOBJECT
 	int imageID;
 };
 
-struct MAINCHARACTER
+struct MAINCARACTER
 {
 	DYNAMICOBJECT DynamicObject;
 	int Level;
@@ -25,16 +26,19 @@ struct NPC
 
 struct PLAYER
 {
-	MAINCHARACTER MainCaracter;
+	MAINCARACTER MainCaracter;
 	char Job[16];
 };
 
 struct ENEMY
 {
-	MAINCHARACTER MainCaracter;
+	MAINCARACTER MainCaracter;
 	bool Chest;
 	bool BossFlag;
 };
+
+void drawMainCaracterParam(const MAINCARACTER& mc);
+
 
 int main()
 {
@@ -51,5 +55,18 @@ int main()
 		{"Enemy", 10, 2, 221, 40, 50, 60, 40, false, false}
 	};
 
+	MAINCARACTER MainCaracter = { "Player", 0, 0, 111, 50, 90, 40, 60 };
+
+	drawMainCaracterParam(MainCaracter);
+
+
+}
+
+void drawMainCaracterParam(const MAINCARACTER& mc)
+{
+	cout << "名前 : " << mc.DynamicObject.name
+		<< ", X " << mc.DynamicObject.posX << ", Y " << mc.DynamicObject.posY
+		<< ", 画像ID : " << mc.DynamicObject.imageID << endl
+		<< "Lv" << mc.Level << ", HP" << mc.HP << ", MP" << mc.MP << ", 攻撃力" << mc.Attack << endl;
 }
 
